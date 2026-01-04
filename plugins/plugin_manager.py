@@ -279,7 +279,7 @@ class PluginManager:
             repo = porcelain.clone(repo, dirname, checkout=True)
             if os.path.exists(os.path.join(dirname, "requirements.txt")):
                 logger.info("detect requirements.txt，installing...")
-            pkgmgr.install_requirements(os.path.join(dirname, "requirements.txt"))
+                pkgmgr.install_requirements(os.path.join(dirname, "requirements.txt"))
             return True, "安装插件成功，请使用 #scanp 命令扫描插件或重启程序，开启前请检查插件是否需要配置"
         except Exception as e:
             logger.error("Failed to install plugin, {}".format(e))
@@ -314,7 +314,7 @@ class PluginManager:
             porcelain.pull(dirname, "origin")
             if os.path.exists(os.path.join(dirname, "requirements.txt")):
                 logger.info("detect requirements.txt，installing...")
-            pkgmgr.install_requirements(os.path.join(dirname, "requirements.txt"))
+                pkgmgr.install_requirements(os.path.join(dirname, "requirements.txt"))
             return True, "更新插件成功，请重新运行程序"
         except Exception as e:
             logger.error("Failed to update plugin, {}".format(e))
