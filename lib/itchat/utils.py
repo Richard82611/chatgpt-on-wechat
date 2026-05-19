@@ -1,4 +1,10 @@
-import re, os, sys, subprocess, copy, traceback, logging
+import re
+import os
+import sys
+import subprocess
+import copy
+import traceback
+import logging
 
 try:
     from HTMLParser import HTMLParser
@@ -8,7 +14,7 @@ try:
     from urllib import quote as _quote
     quote = lambda n: _quote(n.encode('utf8', 'replace'))
 except ImportError:
-    from urllib.parse import quote
+    pass
 
 import requests
 

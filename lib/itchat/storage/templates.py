@@ -1,4 +1,5 @@
-import logging, copy, pickle
+import logging
+import copy
 from weakref import ref
 
 from ..returnvalues import ReturnValue
@@ -244,7 +245,7 @@ class Chatroom(AbstractUserDict):
                     return copy.deepcopy(contact)
     def __setstate__(self, state):
         super(Chatroom, self).__setstate__(state)
-        if not 'MemberList' in self:
+        if 'MemberList' not in self:
             self['MemberList'] = fakeContactList
 
 class ChatroomMember(AbstractUserDict):

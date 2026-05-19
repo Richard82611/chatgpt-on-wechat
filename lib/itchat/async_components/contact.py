@@ -1,5 +1,8 @@
-import time, re, io
-import json, copy
+import time
+import re
+import io
+import json
+import copy
 import logging
 
 from .. import config, utils
@@ -211,7 +214,7 @@ def update_local_uin(core, msg):
         usernames = msg['StatusNotifyUserName'].split(',')
         if 0 < len(uins) == len(usernames):
             for uin, username in zip(uins, usernames):
-                if not '@' in username: continue
+                if '@' not in username: continue
                 fullContact = core.memberList + core.chatroomList + core.mpList
                 userDicts = utils.search_dict_list(fullContact,
                     'UserName', username)

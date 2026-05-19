@@ -7,7 +7,6 @@ import string
 import logging
 from typing import Tuple
 
-import bridge.bridge
 import plugins
 from bridge.bridge import Bridge
 from bridge.context import ContextType
@@ -222,7 +221,7 @@ class Godcmd(Plugin):
             if len(content) == 1:
                 reply = Reply()
                 reply.type = ReplyType.ERROR
-                reply.content = f"空指令，输入#help查看指令列表\n"
+                reply.content = "空指令，输入#help查看指令列表\n"
                 e_context["reply"] = reply
                 e_context.action = EventAction.BREAK_PASS
                 return
@@ -290,7 +289,7 @@ class Godcmd(Plugin):
                         user_data = conf().get_user_data(user)
                         user_data.pop("openai_api_key")
                         ok, result = True, "你的OpenAI私有api_key已清除"
-                    except Exception as e:
+                    except Exception:
                         ok, result = False, "你没有设置私有api_key"
                 elif cmd == "set_gpt_model":
                     if len(args) == 1:
@@ -310,7 +309,7 @@ class Godcmd(Plugin):
                         user_data = conf().get_user_data(user)
                         user_data.pop("gpt_model")
                         ok, result = True, "你的GPT模型已重置"
-                    except Exception as e:
+                    except Exception:
                         ok, result = False, "你没有设置私有GPT模型"
                 elif cmd == "reset":
                     if bottype in [const.OPEN_AI, const.CHATGPT, const.CHATGPTONAZURE, const.LINKAI, const.BAIDU, const.XUNFEI, const.QWEN, const.GEMINI, const.ZHIPU_AI, const.CLAUDEAPI]:

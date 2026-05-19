@@ -1,6 +1,5 @@
 # encoding:utf-8
 import json
-import os
 import uuid
 from uuid import getnode as get_mac
 

@@ -98,7 +98,7 @@ def c2c_download_and_convert(wework, message, file_name):
     # 删除SILK文件
     try:
         os.remove(save_path)
-    except Exception as e:
+    except Exception:
         pass
 
 

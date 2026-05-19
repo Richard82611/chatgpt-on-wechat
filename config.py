@@ -209,7 +209,7 @@ class Config(dict):
     def get(self, key, default=None):
         try:
             return self[key]
-        except KeyError as e:
+        except KeyError:
             return default
         except Exception as e:
             raise e
@@ -225,7 +225,7 @@ class Config(dict):
             with open(os.path.join(get_appdata_dir(), "user_datas.pkl"), "rb") as f:
                 self.user_datas = pickle.load(f)
                 logger.info("[Config] User datas loaded.")
-        except FileNotFoundError as e:
+        except FileNotFoundError:
             logger.info("[Config] User datas file not found, ignore.")
         except Exception as e:
             logger.info("[Config] User datas error: {}".format(e))

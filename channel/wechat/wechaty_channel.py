@@ -24,7 +24,7 @@ from config import conf
 
 try:
     from voice.audio_convert import any_to_sil
-except Exception as e:
+except Exception:
     pass
 
 
@@ -90,7 +90,7 @@ class WechatyChannel(ChatChannel):
                 os.remove(file_path)
                 if sil_file != file_path:
                     os.remove(sil_file)
-            except Exception as e:
+            except Exception:
                 pass
             logger.info("[WX] sendVoice={}, receiver={}".format(reply.content, receiver))
         elif reply.type == ReplyType.IMAGE_URL:  # 从网络下载图片
