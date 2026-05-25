@@ -14,7 +14,7 @@ try:
     from urllib import quote as _quote
     quote = lambda n: _quote(n.encode('utf8', 'replace'))
 except ImportError:
-    pass
+    from urllib.parse import quote
 
 import requests
 
