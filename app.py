@@ -35,7 +35,7 @@ def start_channel(channel_name: str):
         try:
             from common import linkai_client
             threading.Thread(target=linkai_client.start, args=(channel,)).start()
-        except Exception as e:
+        except Exception:
             pass
     channel.startup()
 

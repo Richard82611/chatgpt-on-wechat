@@ -1,7 +1,6 @@
 """
 google voice service
 """
-import json
 
 import openai
 
@@ -11,7 +10,8 @@ from config import conf
 from voice.voice import Voice
 import requests
 from common import const
-import datetime, random
+import datetime
+import random
 
 class OpenaiVoice(Voice):
     def __init__(self):
@@ -38,7 +38,7 @@ class OpenaiVoice(Voice):
             text = response_data['text']
             reply = Reply(ReplyType.TEXT, text)
             logger.info("[Openai] voiceToText text={} voice file name={}".format(text, voice_file))
-        except Exception as e:
+        except Exception:
             reply = Reply(ReplyType.ERROR, "我暂时还无法听清您的语音，请稍后再试吧~")
         finally:
             return reply
@@ -62,7 +62,7 @@ class OpenaiVoice(Voice):
             logger.debug(f"[OPENAI] text_to_Voice file_name={file_name}, input={text}")
             with open(file_name, 'wb') as f:
                 f.write(response.content)
-            logger.info(f"[OPENAI] text_to_Voice success")
+            logger.info("[OPENAI] text_to_Voice success")
             reply = Reply(ReplyType.VOICE, file_name)
         except Exception as e:
             logger.error(e)

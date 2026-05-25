@@ -6,7 +6,6 @@ wechat channel
 
 import io
 import json
-import os
 import threading
 import time
 import requests
@@ -21,7 +20,7 @@ from common.log import logger
 from common.singleton import singleton
 from common.time_check import time_checker
 from common.utils import convert_webp_to_png, remove_markdown_symbol
-from config import conf, get_appdata_dir
+from config import conf
 from lib import itchat
 from lib.itchat.content import *
 
@@ -80,7 +79,7 @@ def qrCallback(uuid, status, qrcode):
             _thread = threading.Thread(target=img.show, args=("QRCode",))
             _thread.setDaemon(True)
             _thread.start()
-        except Exception as e:
+        except Exception:
             pass
 
         import qrcode
@@ -159,7 +158,7 @@ class WechatChannel(ChatChannel):
                 if self.auto_login_times < 100:
                     chat_channel.handler_pool._shutdown = False
                     self.startup()
-        except Exception as e:
+        except Exception:
             pass
 
     def loginCallback(self):
@@ -286,7 +285,7 @@ def _send_login_success():
         from common.linkai_client import chat_client
         if chat_client.client_id:
             chat_client.send_login_success()
-    except Exception as e:
+    except Exception:
         pass
 
 
@@ -295,7 +294,7 @@ def _send_logout():
         from common.linkai_client import chat_client
         if chat_client.client_id:
             chat_client.send_logout()
-    except Exception as e:
+    except Exception:
         pass
 
 
@@ -304,6 +303,6 @@ def _send_qr_code(qrcode_list: list):
         from common.linkai_client import chat_client
         if chat_client.client_id:
             chat_client.send_qrcode(qrcode_list)
-    except Exception as e:
+    except Exception:
         pass
 

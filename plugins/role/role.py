@@ -138,11 +138,11 @@ class Role(Plugin):
                     for role in self.tags[tag][1]:
                         help_text += f"{role['title']}: {role['remark']}\n"
                 else:
-                    help_text = f"未知角色类型。\n"
+                    help_text = "未知角色类型。\n"
                     help_text += "目前的角色类型有: \n"
                     help_text += "，".join([self.tags[tag][0] for tag in self.tags]) + "\n"
             else:
-                help_text = f"请输入角色类型。\n"
+                help_text = "请输入角色类型。\n"
                 help_text += "目前的角色类型有: \n"
                 help_text += "，".join([self.tags[tag][0] for tag in self.tags]) + "\n"
             reply = Reply(ReplyType.INFO, help_text)

@@ -1,7 +1,6 @@
 import os
 import pathlib
 
-from config import conf
 
 
 class TmpDir(object):

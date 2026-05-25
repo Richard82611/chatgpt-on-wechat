@@ -6,7 +6,6 @@ wechat channel message
 
 from bridge.context import ContextType
 from channel.chat_message import ChatMessage
-from common.log import logger
 from wcferry import WxMsg
 
 

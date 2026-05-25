@@ -2,8 +2,6 @@
 
 import time
 import json
-import openai
-import openai.error
 from bot.bot import Bot
 from bot.session_manager import SessionManager
 from bridge.context import ContextType
@@ -202,7 +200,7 @@ class ModelScopeBot(Bot):
                                 delta_content = json_data.get("choices", [{}])[0].get("delta", {}).get("content", "")
                                 if delta_content:
                                     content += delta_content
-                            except json.JSONDecodeError as e:
+                            except json.JSONDecodeError:
                                 pass
                 return {
                     "total_tokens": 1,  # 流式响应通常不返回token使用情况

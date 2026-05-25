@@ -39,7 +39,7 @@ class Tool(Plugin):
         help_text += f"{trigger_prefix}tool 工具名 " + "命令: 根据给出的{命令}使用指定工具尽力为你得到结果。\n"
         help_text += f"{trigger_prefix}tool reset: 重置工具。\n\n"
 
-        help_text += f"已加载工具列表: \n"
+        help_text += "已加载工具列表: \n"
         for idx, tool in enumerate(main_tool_register.get_registered_tool_names()):
             if idx != 0:
                 help_text += ", "

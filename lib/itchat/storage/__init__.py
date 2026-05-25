@@ -1,4 +1,6 @@
-import os, time, copy
+import os
+import time
+import copy
 from threading import Lock
 
 from .messagequeue import Queue

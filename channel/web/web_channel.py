@@ -1,11 +1,10 @@
-import sys
 import time
 import web
 import json
 from queue import Queue
 from bridge.context import *
 from bridge.reply import Reply, ReplyType
-from channel.chat_channel import ChatChannel, check_prefix
+from channel.chat_channel import ChatChannel
 from channel.chat_message import ChatMessage
 from common.log import logger
 from common.singleton import singleton
@@ -115,7 +114,7 @@ class WebChannel(ChatChannel):
             while True:
                 try:
                     # 发送心跳
-                    yield f": heartbeat\n\n"
+                    yield ": heartbeat\n\n"
                     
                     # 非阻塞方式获取消息
                     if not self.message_queues[user_id].empty():

@@ -1,4 +1,5 @@
-import pickle, os
+import pickle
+import os
 import logging
 
 import requests  # type: ignore
@@ -37,7 +38,7 @@ async def load_login_status(self, fileDir,
     try:
         with open(fileDir, 'rb') as f:
             j = pickle.load(f)
-    except Exception as e:
+    except Exception:
         logger.debug('No such file, loading login status failed.')
         return ReturnValue({'BaseResponse': {
             'ErrMsg': 'No such file, loading login status failed.',
